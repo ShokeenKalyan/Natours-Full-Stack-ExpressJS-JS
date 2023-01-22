@@ -20,6 +20,7 @@ const reviewRouter = require('./routes/reviewRoutes.js')
 const bookingRouter = require('./routes/bookingRoutes.js')
 const viewRouter = require('./routes/viewRoutes.js')
 
+// Start Express App
 const app = express() 
 
 // Using Pug template engine to render website pages on the server side
