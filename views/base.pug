@@ -1,0 +1,53 @@
+doctype html
+html
+    //- head 
+        title Natours #{tour}
+        //- This is interpoltaion(Just like ES6 template string format)
+
+        //- Only attribute name with proper indentation is required
+        link(rel='stylesheet' href='css/style.css')
+        //- Static files like css, img or html are picked up automatically by Express from public folder due to express.static(pathname)
+        link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+    
+    //- body
+        h1=tour
+        //- Passing data into html attribute
+        //- This code is called buffered code
+        h2=user.toUpperCase()
+        //-We can use simple javascript also 
+
+        //- Implementing unbuffered code
+        - const x = 9
+        h2= 2*x
+
+        p This is just some text
+    
+    head
+        block head
+            meta(charset='UTF-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            link(rel='stylesheet' href='/css/style.css')
+            link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+            link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+            title Natours | #{title}
+    
+    
+    body
+        // HEADER
+        include _header
+        
+        // CONTENT
+        block content
+            h1 This is a placeholder heading
+        
+        // FOOTER
+        include _footer 
+
+        //-script(script-src-elem='https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js')
+        //-script(src='/js/mapbox.js')
+        //-script(src='/js/login.js')
+        //-script(src='https://js.stripe.com/v3/') // Including Stripe for front-end
+        script(src='/js/bundle.js')
+        
+
+
