@@ -10,6 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
 const hpp = require('hpp')
 const cookieParser = require('cookie-parser')
+const compression = require('compression') // To compress our text/html/json responses to client
 
 const AppError = require('./utils/appError.js')
 const globalErrorHandler = require('./controllers/errorController.js')
@@ -77,6 +78,9 @@ app.use(hpp({
     whiteList: ['duration', 'ratingsQuantity', 'ratingsAverage', 'maxGroupSize', 'difficulty', 'price'] 
     // Array of properties for which we allow duplicate fields 
 })) // This will clear multiple parameter and work according to only last of them(last sort)
+
+// Compression middleware - Works only for text and not images
+app.use(compression())
 
 
 // Test Middleware

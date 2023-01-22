@@ -72,7 +72,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
     //console.log(req.body) // req.body without urlencoded parser will not work since the data is coming from a html form which we need to parse first
-    console.log("Body", req.body)
+    // console.log("Body", req.body)
     const updatedUser = await User.findByIdAndUpdate(req.user.id, {
         // We are getting req.user.id from protect middleware
         

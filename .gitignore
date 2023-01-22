@@ -5,3 +5,4 @@ app_global.js
 app_intro.js
 app_middleware.js
 server1.js
+.cache/

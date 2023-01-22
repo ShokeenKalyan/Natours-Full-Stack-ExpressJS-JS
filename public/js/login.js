@@ -6,18 +6,18 @@ import { showAlert } from './alerts'
 //const api = '/api/v1';
 
 export const login = async (email, password) => {
-    console.log(email, password)
+    // console.log(email, password)
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
-            //url: `${baseUrl}${api}/users/login`,
+            //url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login', // We can omit initial part since our website and api are making use of same url
             data: {
                 email,
                 password
             }
         })
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.status === 'success') {
             showAlert('sucess', 'Logged in successfully!')
 
@@ -38,7 +38,8 @@ export const logout = async () => {
     try {
         const res = await axios({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            //url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
         })
         // Reload the Page programmatically which would send the invalid cookie to the server(One w/o the token)
 

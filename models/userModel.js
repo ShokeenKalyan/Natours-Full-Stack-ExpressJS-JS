@@ -110,7 +110,7 @@ userSchema.methods.createPasswordResetToken = function() {
     // Just like password, we should never store a reset password as it is in the DB. We need to encrypt it
     this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex')
     this.passwordResetExpires = Date.now() + 10*60*1000 // reset password expires in 10 min
-    console.log(resetToken, this.passwordResetToken)
+    // console.log(resetToken, this.passwordResetToken)
     return resetToken // return the unencrypted password to be sent via email
 }
 
