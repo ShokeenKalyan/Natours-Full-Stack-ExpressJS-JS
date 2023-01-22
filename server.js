@@ -23,7 +23,7 @@ mongoose.connect(DB, {
 })
 
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000 // Setting port to process.env.PORT is mandotory for deployment via Heroku
 const server = app.listen(port, () => {
     console.log(`App running on Port : ${port}`)
 })
