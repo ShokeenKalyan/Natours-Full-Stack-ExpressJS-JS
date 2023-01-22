@@ -11,6 +11,7 @@ const xss = require('xss-clean')
 const hpp = require('hpp')
 const cookieParser = require('cookie-parser')
 const compression = require('compression') // To compress our text/html/json responses to client
+const cors = require('cors') // CORS- Cross origin resource sharing - To enable other websites to get access to our API(Using fetch, ajax or axios)
 
 const AppError = require('./utils/appError.js')
 const globalErrorHandler = require('./controllers/errorController.js')
@@ -34,6 +35,22 @@ app.set('views', path.join(__dirname, './views')) //Define folder where our view
 
 
 /* GLOBAL MIDDLEWARE STACK */
+
+// Implementing CORS
+// This will work for only simple requests(GET & POST)
+app.use(cors())
+// This will set the header to - Access-Allow-Origin *
+// Another example - API : api.natours.com, Front-end: natours.com
+// To allow only natours.com to access the api, we use-
+// app.use(cors({
+//  origin: 'https://www.natours.com'
+//}))
+
+// For non-simple requests(PUT, PATCH, DELETE and sending COOKIES)
+// options is just a http method like get, put, post etc which the browser sends when there is a pre-flight phase
+app.options('*', cors())
+// Example of restricting it to specific routes
+// app.options('/api/v1/tours/:id', cors()) // Restricting api access to delete, put or patch request on a tour  
 
 // Serving Static files
 // app.use(express.static(`${__dirname}/public`)) // This middleware helps to access static files like html, img etc from a folder
