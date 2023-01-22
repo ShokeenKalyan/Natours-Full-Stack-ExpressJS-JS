@@ -40,3 +40,13 @@ process.on('unhandledRejection', err => {
     })
 })
 
+// Below code is to prevent hanging requests that can happen due to heroku's feature of re-starting apps in 24hr cycle to keep our app in a healthy state
+// Heroku doses this by emitting an event called 'Sick Term Signal'
+process.on('SIGTERM', () => {
+    console.log('SIGTERM received. Shutting down gracefully')
+    server.close(() => {
+        console.log('Process terminated')
+        // No need of process.exit because the SIGTERM itself will cause the application to shut down
+    })
+})
+

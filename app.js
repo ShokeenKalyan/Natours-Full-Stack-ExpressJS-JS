@@ -22,7 +22,9 @@ const bookingRouter = require('./routes/bookingRoutes.js')
 const viewRouter = require('./routes/viewRoutes.js')
 
 // Start Express App
-const app = express() 
+const app = express()
+
+// app.enable('trust proxy') // To trust proxy servers like heroku(for deployment)
 
 // Using Pug template engine to render website pages on the server side
 app.set('view engine', 'pug') // Express automatically supports
